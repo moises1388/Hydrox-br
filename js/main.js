@@ -139,12 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   form.querySelectorAll('.check-opt').forEach(opt => {
-    opt.addEventListener('click', (e) => {
-      e.preventDefault(); // evita que el label haga doble toggle nativo en el input
-      const input = opt.querySelector('input');
-      const newState = !input.checked;
-      input.checked = newState;
-      opt.classList.toggle('sel', newState);
+    const input = opt.querySelector('input');
+    input.addEventListener('change', () => {
+      opt.classList.toggle('sel', input.checked);
     });
   });
 
