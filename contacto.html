@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Busca tu propiedad en Guatemala con Hydrox B&R AI. Llena el formulario y recibe tu Top 3 en Telegram.">
+<title>Buscar propiedad — Hydrox B&R AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="icon" href="assets/logo-verde.png" type="image/png">
+<style>
+  .contacto-section { background:var(--hueso); padding:80px 0; }
+  .contacto-grid {
+    display:grid; grid-template-columns:1fr 1.4fr;
+    gap:52px; align-items:start;
+  }
+  .contact-info h2  { font-size:clamp(26px,3vw,36px); margin-bottom:16px; }
+  .contact-info p   { color:var(--piedra); font-size:16px; font-weight:300; margin-bottom:28px; line-height:1.75; }
+  .info-item        { display:flex; gap:12px; align-items:flex-start; margin-bottom:18px; }
+  .info-item .dot   { width:32px; height:32px; border-radius:10px; background:var(--verde-profundo); color:#fff; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; margin-top:2px; }
+  .info-item h4     { font-size:15px; margin-bottom:2px; }
+  .info-item p      { font-size:13.5px; color:var(--piedra-suave); margin-bottom:0; }
+
+  /* Miniatura de Telegram-like para la sección info */
+  .telegram-preview { background:var(--verde-profundo); border-radius:16px; padding:20px; color:#fff; margin-top:28px; }
+  .telegram-preview .head { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .telegram-preview .av   { width:30px; height:30px; border-radius:50%; background:rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; font-size:14px; }
+  .telegram-preview .name { font-size:13.5px; font-weight:600; }
+  .telegram-preview .time { font-family:'Space Mono',monospace; font-size:10px; color:var(--agua-claro); }
+  .telegram-preview .msg  { background:rgba(255,255,255,.08); border-radius:10px; padding:12px 14px; font-size:13px; line-height:1.6; color:rgba(255,255,255,.88); }
+  .telegram-preview .msg b{ color:#fff; }
+
+  @media(max-width:860px){ .contacto-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+      <div class="brand-text">
+        <strong>Hydrox B&amp;R</strong>
+        <small>AI · GUATEMALA</small>
+      </div>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html#como-funciona">Cómo funciona</a>
+      <a href="index.html#fuentes">Fuentes</a>
+      <a href="planes.html">Planes</a>
+      <a href="contacto.html" class="btn btn-pri">Buscar mi propiedad</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- INNER HERO -->
+<section class="inner-hero">
+  <div class="wrap">
+    <span class="eyebrow">Solicitud de búsqueda</span>
+    <h1>Encuentra tu propiedad.</h1>
+    <p>Cuéntanos qué buscas en 3 pasos rápidos. En minutos recibes tu Top 3 en Telegram.</p>
+  </div>
+</section>
+
+<!-- FORMULARIO + INFO -->
+<section class="contacto-section">
+  <div class="wrap contacto-grid">
+
+    <!-- Info lateral -->
+    <div class="contact-info">
+      <h2>¿Cómo funciona?</h2>
+      <p>Llena el formulario y nuestro sistema busca en tiempo real en las 4 principales plataformas inmobiliarias de Guatemala.</p>
+
+      <div class="info-item">
+        <div class="dot">1</div>
+        <div><h4>Cuéntanos qué buscas</h4><p>Tipo, zona y presupuesto</p></div>
+      </div>
+      <div class="info-item">
+        <div class="dot">2</div>
+        <div><h4>Buscamos en 4 fuentes</h4><p>Facebook, Encuentra24, Immobili, CBR</p></div>
+      </div>
+      <div class="info-item">
+        <div class="dot">3</div>
+        <div><h4>La IA elige tu Top 3</h4><p>Claude Sonnet analiza y selecciona</p></div>
+      </div>
+      <div class="info-item">
+        <div class="dot">💬</div>
+        <div><h4>Lo recibes en Telegram</h4><p>En 2–5 minutos en tu chat</p></div>
+      </div>
+
+      <div class="telegram-preview">
+        <div class="head">
+          <div class="av">💧</div>
+          <div>
+            <div class="name">Hydrox B&amp;R AI</div>
+            <div class="time">Así llegan tus resultados</div>
+          </div>
+        </div>
+        <div class="msg">
+          <b>#1 Casa · Zona 15 · $185,000</b><br>
+          3 hab · 250 m² · jardín · garaje<br>
+          📞 +502 5555-0000 · <span style="color:var(--agua-claro)">Ver propiedad →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULARIO MULTI-PASO -->
+    <div>
+      <div id="plan-notice" aria-live="polite"></div>
+      <form id="hydrox-form">
+        <div class="form-card">
+          <!-- Pestañas -->
+          <div class="form-tabs">
+            <div class="form-tab">¿Qué buscas?</div>
+            <div class="form-tab">Zona y presupuesto</div>
+            <div class="form-tab">¿Cómo te avisamos?</div>
+          </div>
+
+          <!-- Cuerpo del formulario -->
+          <div class="form-body">
+
+            <!-- ── PASO 1: Tipo de propiedad ── -->
+            <div class="form-step">
+              <div class="field">
+                <label>Tipo de propiedad <span class="req">*</span></label>
+                <div class="radio-group" data-required>
+                  <label class="radio-opt"><input type="radio" name="tipo" value="Casa"> Casa</label>
+                  <label class="radio-opt"><input type="radio" name="tipo" value="Apartamento"> Apartamento</label>
+                  <label class="radio-opt"><input type="radio" name="tipo" value="Local Comercial"> Local Comercial</label>
+                  <label class="radio-opt"><input type="radio" name="tipo" value="Terreno"> Terreno</label>
+                  <label class="radio-opt"><input type="radio" name="tipo" value="Bodega"> Bodega</label>
+                  <label class="radio-opt"><input type="radio" name="tipo" value="Oficina"> Oficina</label>
+                </div>
+              </div>
+              <div class="field">
+                <label>¿Compra o alquiler? <span class="req">*</span></label>
+                <div class="radio-group" data-required>
+                  <label class="radio-opt"><input type="radio" name="modalidad" value="Compra"> 🏠 Compra</label>
+                  <label class="radio-opt"><input type="radio" name="modalidad" value="Alquiler"> 🔑 Alquiler</label>
+                </div>
+              </div>
+              <div class="form-nav">
+                <span></span>
+                <div class="prog-dots">
+                  <div class="prog-dot"></div>
+                  <div class="prog-dot"></div>
+                  <div class="prog-dot"></div>
+                </div>
+                <button type="button" class="btn btn-sec btn-next">Siguiente →</button>
+              </div>
+            </div>
+
+            <!-- ── PASO 2: Zona y presupuesto ── -->
+            <div class="form-step">
+              <div class="field">
+                <label>Zona / Sector <span class="req">*</span><br><small class="hint">Selecciona una o más zonas</small></label>
+                <div class="check-group check-grid" data-required>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Zona 1 - Centro"> Zona 1 · Centro</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Zona 9"> Zona 9</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Zona 10 - Zona Viva"> Zona 10 · Zona Viva</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Zona 13"> Zona 13</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Zona 14"> Zona 14</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Zona 15"> Zona 15</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Zona 16"> Zona 16</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Mixco"> Mixco</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Villa Nueva"> Villa Nueva</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Cayala"> Cayalá</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Carretera El Salvador"> Carr. El Salvador</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Antigua Guatemala"> Antigua Guatemala</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="Santa Catarina Pinula"> Santa Catarina Pinula</label>
+                  <label class="check-opt grid"><input type="checkbox" name="zona" value="San Cristobal"> San Cristóbal</label>
+                </div>
+              </div>
+              <div class="field">
+                <label>Presupuesto máximo <span class="req">*</span></label>
+                <input type="text" name="presupuesto" placeholder="Ej. $150,000 o Q1,200,000" required>
+              </div>
+              <div class="field">
+                <label>Tamaño / extensión <span style="color:var(--piedra-suave);">(opcional)</span></label>
+                <input type="text" name="tamano" placeholder="Ej. mínimo 200 m², 2 habitaciones">
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn-prev">← Anterior</button>
+                <div class="prog-dots">
+                  <div class="prog-dot"></div>
+                  <div class="prog-dot"></div>
+                  <div class="prog-dot"></div>
+                </div>
+                <button type="button" class="btn btn-sec btn-next">Siguiente →</button>
+              </div>
+            </div>
+
+            <!-- ── PASO 3: Contacto ── -->
+            <div class="form-step">
+              <div class="field">
+                <label>Características especiales <span style="color:var(--piedra-suave);">(opcional)</span></label>
+                <textarea name="caracteristicas" placeholder="Ej. piscina, jardín, amueblada, acceso para vehículo, cerca de colegio..."></textarea>
+              </div>
+              <div class="field">
+                <label>Correo electrónico <span class="req">*</span></label>
+                <input type="email" name="email" placeholder="tu@email.com" required>
+              </div>
+              <div class="field">
+                <label>Telegram Chat ID <span class="req">*</span></label>
+                <input type="text" name="telegram_chat_id" placeholder="Ej. 7494138882" required>
+                <div class="hint">¿No sabes tu ID? Escríbele "start" a <strong>@userinfobot</strong> en Telegram.</div>
+              </div>
+              <div class="field">
+                <label>WhatsApp <span style="color:var(--piedra-suave);">(opcional)</span></label>
+                <input type="text" name="whatsapp" placeholder="+502 5555-0000">
+              </div>
+              <div class="field">
+                <label>Nombre del agente <span style="color:var(--piedra-suave);">(opcional)</span></label>
+                <input type="text" name="agente" placeholder="Tu nombre o el de tu agente">
+              </div>
+              <div class="hp-field" aria-hidden="true">
+                <label for="website">No llenar este campo</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn-prev">← Anterior</button>
+                <div class="prog-dots">
+                  <div class="prog-dot"></div>
+                  <div class="prog-dot"></div>
+                  <div class="prog-dot"></div>
+                </div>
+                <button type="submit" id="submit-btn" class="btn btn-sec btn-lg">Buscar mi propiedad →</button>
+              </div>
+            </div>
+
+          </div><!-- /form-body -->
+        </div><!-- /form-card -->
+      </form>
+
+      <!-- Estado de éxito (oculto inicialmente) -->
+      <div id="form-success" class="form-success">
+        <div class="ok-icon">💧</div>
+        <h3>¡Búsqueda en proceso!</h3>
+        <p>Estamos rastreando las 4 fuentes y eligiendo tu Top 3.<br>Revisa tu Telegram en los próximos 2–5 minutos.</p>
+
+        <!-- Tarjeta de usuario: código + contador -->
+        <div class="user-card">
+          <div class="user-card-row">
+            <span class="uc-label">Tu código de usuario</span>
+            <span class="uc-code" id="display-user-code">—</span>
+          </div>
+          <div>
+            <div class="sc-track"><div class="sc-fill" id="sc-fill" style="width:0%"></div></div>
+            <span class="sc-text" id="sc-text">— / 15 búsquedas del Plan Básico</span>
+          </div>
+          <div class="plan-alert" id="plan-alert" style="display:none"></div>
+        </div>
+
+        <!-- Calificación (aparece al confirmar recepción) -->
+        <button class="btn btn-sec" id="received-btn" style="margin-top:20px">
+          ✓ Ya recibí mis resultados — Calificar
+        </button>
+        <div class="rating-section" id="rating-section" style="display:none">
+          <p class="rating-q">¿Qué tan útiles fueron los resultados?</p>
+          <div class="stars" id="stars">
+            <button class="star" data-val="1">★</button>
+            <button class="star" data-val="2">★</button>
+            <button class="star" data-val="3">★</button>
+            <button class="star" data-val="4">★</button>
+            <button class="star" data-val="5">★</button>
+          </div>
+          <p class="rating-thanks" id="rating-thanks" style="display:none">¡Gracias! Tu calificación nos ayuda a mejorar.</p>
+        </div>
+
+        <a href="index.html" class="btn btn-sec" style="margin-top:16px">Volver al inicio</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+        <p>Automatización inteligente para pymes. Sistema RE — Buscador de propiedades en Guatemala.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Producto</h5>
+        <ul>
+          <li><a href="como-funciona.html">Cómo funciona</a></li>
+          <li><a href="index.html#fuentes">Fuentes activas</a></li>
+          <li><a href="planes.html">Planes y precios</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="contacto.html">Buscar propiedad</a></li>
+          <li><a href="mailto:servicioshydrox@gmail.com">servicioshydrox@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Hydrox · Automatización Inteligente para Pymes</span>
+      <span class="mono">HYDROX B&amp;R AI · v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

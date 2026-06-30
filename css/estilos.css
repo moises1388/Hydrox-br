@@ -1,0 +1,150 @@
+/* ═══════════════════════════════════════════════════════════════════
+   HYDROX B&R AI  ·  estilos.css
+   Variables globales · reset · tipografía · header · footer · utilidades
+   Se carga en TODAS las páginas.
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. TOKENS DE DISEÑO ──────────────────────────────────────── */
+:root {
+  --verde-profundo: #123D29;
+  --verde-noche:    #0C2C1E;
+  --verde:          #1E7A4D;
+  --verde-claro:    #2FA468;
+  --agua:           #5BA8D6;
+  --agua-claro:     #9AD0EC;
+  --piedra:         #44515C;
+  --piedra-suave:   #6B7680;
+  --hueso:          #F6F8F4;
+  --blanco:         #FFFFFF;
+  --borde:          #E1E7DE;
+  --tinta:          #15231B;
+  --sombra:         0 18px 50px -20px rgba(18,61,41,.35);
+  --radio:          18px;
+  --radio-sm:       10px;
+  --radio-xl:       28px;
+}
+
+/* ── 2. RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html  { scroll-behavior: smooth; }
+body  { font-family:'Outfit',system-ui,sans-serif; color:var(--tinta); background:var(--blanco); line-height:1.65; -webkit-font-smoothing:antialiased; }
+img   { max-width:100%; display:block; }
+a     { text-decoration:none; color:inherit; }
+ul    { list-style:none; }
+button,input,select,textarea { font-family:inherit; }
+
+/* ── 3. TIPOGRAFÍA ────────────────────────────────────────────── */
+h1,h2,h3,h4 {
+  font-family:'Fraunces',Georgia,serif;
+  font-weight:600;
+  line-height:1.08;
+  letter-spacing:-.015em;
+}
+.mono { font-family:'Space Mono',monospace; }
+
+.eyebrow {
+  font-family:'Space Mono',monospace;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--verde-claro);
+  font-weight:700;
+}
+
+/* ── 4. LAYOUT ────────────────────────────────────────────────── */
+.wrap    { max-width:1180px; margin:0 auto; padding:0 28px; }
+section  { padding:96px 0; }
+
+/* ── 5. HEADER ────────────────────────────────────────────────── */
+header {
+  position:fixed; top:0; left:0; right:0;
+  z-index:100;
+  padding:18px 0;
+  transition:all .35s ease;
+}
+header.scrolled {
+  background:rgba(12,44,30,.95);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  padding:11px 0;
+  box-shadow:0 8px 30px -12px rgba(0,0,0,.4);
+}
+
+.nav { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+
+.brand { display:flex; align-items:center; gap:12px; }
+.brand img { height:42px; width:auto; transition:height .35s ease; }
+header.scrolled .brand img { height:36px; }
+.brand-text strong {
+  font-family:'Fraunces',serif; font-size:20px; font-weight:600;
+  color:#fff; display:block; line-height:1.1;
+}
+.brand-text small {
+  font-family:'Space Mono',monospace; font-size:9.5px;
+  letter-spacing:.22em; color:var(--agua-claro); font-weight:400;
+}
+
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a { color:rgba(255,255,255,.82); font-size:15px; transition:color .2s; }
+.nav-links a:hover { color:#fff; }
+
+.nav-toggle {
+  display:none; background:none; border:none;
+  color:#fff; font-size:26px; cursor:pointer; padding:4px;
+}
+
+/* ── 6. FOOTER ────────────────────────────────────────────────── */
+footer { background:var(--verde-noche); color:rgba(255,255,255,.7); padding:64px 0 32px; }
+
+.footer-grid {
+  display:grid; grid-template-columns:1.4fr 1fr 1fr;
+  gap:48px; margin-bottom:44px;
+}
+.footer-brand img   { height:56px; margin-bottom:16px; }
+.footer-brand p     { font-size:14px; max-width:280px; font-weight:300; line-height:1.75; }
+
+.footer-col h5 {
+  font-family:'Space Mono',monospace; font-size:11px;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--agua-claro); margin-bottom:18px; font-weight:700;
+}
+.footer-col ul  { display:flex; flex-direction:column; gap:11px; }
+.footer-col a   { font-size:14px; color:rgba(255,255,255,.7); transition:color .2s; }
+.footer-col a:hover { color:#fff; }
+
+.footer-bottom {
+  border-top:1px solid rgba(255,255,255,.12);
+  padding-top:26px;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  font-family:'Space Mono',monospace; font-size:12px; color:rgba(255,255,255,.45);
+}
+
+/* ── 7. UTILIDADES GENERALES ──────────────────────────────────── */
+.reveal {
+  opacity:0; transform:translateY(22px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.in { opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+
+.sec-head { margin-bottom:52px; }
+.sec-head .eyebrow { display:inline-block; margin-bottom:14px; color:var(--verde); }
+.sec-head h2   { font-size:clamp(26px,3.6vw,42px); color:var(--tinta); }
+.sec-head p    { color:var(--piedra); font-size:17px; margin-top:12px; font-weight:300; max-width:580px; }
+
+/* ── 8. RESPONSIVE: HEADER + FOOTER ──────────────────────────── */
+@media (max-width:900px) {
+  .nav-links {
+    display:none; position:absolute; top:100%; left:0; right:0;
+    flex-direction:column; align-items:flex-start; gap:16px;
+    background:var(--verde-profundo); padding:22px 28px;
+  }
+  .nav-links.open { display:flex; }
+  .nav-toggle     { display:block; }
+  .footer-grid    { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:560px) {
+  .wrap         { padding:0 20px; }
+  section       { padding:72px 0; }
+  .footer-grid  { grid-template-columns:1fr; }
+}
