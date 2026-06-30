@@ -139,9 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   form.querySelectorAll('.check-opt').forEach(opt => {
-    opt.addEventListener('click', () => {
-      opt.classList.toggle('sel');
-      opt.querySelector('input').checked = opt.classList.contains('sel');
+    opt.addEventListener('click', (e) => {
+      e.preventDefault(); // evita que el label haga doble toggle nativo en el input
+      const input = opt.querySelector('input');
+      const newState = !input.checked;
+      input.checked = newState;
+      opt.classList.toggle('sel', newState);
     });
   });
 
@@ -202,9 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = {};
     fd.forEach((v, k) => { data[k] = v; });
 
-    // Zonas: múltiples checkboxes → un string separado por comas
+    // Zonas: checkboxes + campo libre combinados en un string
     const zonaValues = [...form.querySelectorAll('input[name="zona"]:checked')].map(i => i.value);
+    const zonaOtra = (form.querySelector('#zona_otra')?.value || '').trim();
+    if (zonaOtra) zonaValues.push(zonaOtra);
     data.zona = zonaValues.join(', ');
+    delete data.zona_otra; // ya está incluido en data.zona
 
     // Metadata
     data.fecha_solicitud = new Date().toISOString();
