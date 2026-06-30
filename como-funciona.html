@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cómo funciona Hydrox B&R AI. Búsqueda automatizada en 4 fuentes, análisis con Claude Sonnet y entrega por Telegram.">
+<title>Cómo funciona — Hydrox B&R AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="icon" href="assets/logo-verde.png" type="image/png">
+<style>
+  /* Pasos expandidos */
+  .steps-expanded { display:flex; flex-direction:column; gap:48px; max-width:780px; }
+  .step-exp { display:grid; grid-template-columns:64px 1fr; gap:28px; align-items:flex-start; }
+  .step-num-big {
+    width:60px; height:60px; border-radius:16px;
+    background:var(--verde-profundo); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:22px; font-weight:600;
+    flex-shrink:0;
+  }
+  .step-exp h3 { font-size:22px; margin-bottom:10px; }
+  .step-exp p  { color:var(--piedra); font-size:16px; font-weight:300; line-height:1.75; margin-bottom:12px; }
+  .step-detail { font-family:'Space Mono',monospace; font-size:11.5px; color:var(--verde-claro); background:var(--hueso); border:1px solid var(--borde); border-radius:8px; padding:10px 14px; display:inline-block; }
+
+  /* Tech stack */
+  .tech-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:8px; }
+  .tech-card {
+    background:var(--hueso); border:1px solid var(--borde);
+    border-radius:var(--radio); padding:24px;
+    border-left:3px solid var(--verde);
+  }
+  .tech-card h4    { font-size:17px; margin-bottom:8px; }
+  .tech-card p     { font-size:14px; color:var(--piedra); font-weight:300; line-height:1.65; }
+  .tech-card .icon { font-size:28px; margin-bottom:12px; }
+
+  /* Por qué section */
+  .why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+  .why-item { padding:28px; background:var(--hueso); border-radius:var(--radio); border:1px solid var(--borde); }
+  .why-item h3 { font-size:20px; margin-bottom:10px; }
+  .why-item p  { color:var(--piedra); font-size:15px; font-weight:300; line-height:1.7; }
+
+  @media(max-width:720px){
+    .step-exp  { grid-template-columns:44px 1fr; gap:16px; }
+    .step-num-big { width:44px; height:44px; font-size:17px; border-radius:12px; }
+    .tech-grid { grid-template-columns:1fr; }
+    .why-grid  { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+      <div class="brand-text">
+        <strong>Hydrox B&amp;R</strong>
+        <small>AI · GUATEMALA</small>
+      </div>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html#como-funciona">Cómo funciona</a>
+      <a href="index.html#fuentes">Fuentes</a>
+      <a href="planes.html">Planes</a>
+      <a href="contacto.html" class="btn btn-pri">Buscar mi propiedad</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- INNER HERO -->
+<section class="inner-hero">
+  <div class="wrap">
+    <span class="eyebrow">El proceso</span>
+    <h1>Simple por fuera.<br>Poderoso por dentro.</h1>
+    <p>Cuatro fuentes, inteligencia artificial y entrega automática. Todo en minutos, no en días.</p>
+  </div>
+</section>
+
+<!-- PASOS EXPANDIDOS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Paso a paso</span>
+      <h2>Así funciona cada búsqueda.</h2>
+    </div>
+    <div class="steps-expanded">
+
+      <div class="step-exp reveal">
+        <div class="step-num-big">1</div>
+        <div>
+          <h3>Cuéntanos qué buscas</h3>
+          <p>Completas un formulario breve con lo que necesitas: tipo de propiedad, zona o sector de Guatemala, presupuesto máximo, y cualquier característica especial (piscina, jardín, amueblada, etc.).</p>
+          <div class="step-detail">Formulario web → Envío automático al sistema</div>
+        </div>
+      </div>
+
+      <div class="step-exp reveal">
+        <div class="step-num-big">2</div>
+        <div>
+          <h3>Buscamos en 4 fuentes al mismo tiempo</h3>
+          <p>En cuanto recibes tu solicitud, el sistema lanza búsquedas simultáneas en las plataformas inmobiliarias más activas de Guatemala. No revisamos una por una: todo al mismo tiempo, en tiempo real.</p>
+          <div class="step-detail">Facebook Marketplace GT · Encuentra24 · Immobili Studio · CBR Guatemala</div>
+        </div>
+      </div>
+
+      <div class="step-exp reveal">
+        <div class="step-num-big">3</div>
+        <div>
+          <h3>La IA analiza y selecciona tu Top 3</h3>
+          <p>Claude Sonnet (el modelo de inteligencia artificial de Anthropic) lee todos los resultados y los cruza con tu perfil. Evalúa precio, zona, tamaño, características y relevancia, y elige las 3 que mejor encajan con lo que buscas.</p>
+          <div class="step-detail">Claude Sonnet 4.6 · Anthropic API</div>
+        </div>
+      </div>
+
+      <div class="step-exp reveal">
+        <div class="step-num-big">4</div>
+        <div>
+          <h3>Recibes tu resultado en Telegram</h3>
+          <p>Las 3 propiedades llegan a tu Telegram con toda la información que necesitas: precio, tamaño, zona, fotos y enlace directo para contactar al vendedor. Sin esperas, sin intermediarios.</p>
+          <div class="step-detail">Telegram Bot · Entrega en 2–5 minutos</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TECNOLOGÍA -->
+<section class="fuentes-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Tecnología</span>
+      <h2>Las herramientas que trabajan por ti.</h2>
+    </div>
+    <div class="tech-grid reveal">
+      <div class="tech-card">
+        <div class="icon">🤖</div>
+        <h4>Claude Sonnet AI</h4>
+        <p>El modelo de inteligencia artificial de Anthropic analiza los resultados y hace la selección inteligente de tu Top 3 basada en tu perfil.</p>
+      </div>
+      <div class="tech-card">
+        <div class="icon">⚡</div>
+        <h4>Make.com Automation</h4>
+        <p>Orquesta todo el flujo: recibe tu solicitud, dispara las búsquedas, envía los datos a la IA y entrega los resultados. Sin intervención humana.</p>
+      </div>
+      <div class="tech-card">
+        <div class="icon">🔍</div>
+        <h4>Scraping en tiempo real</h4>
+        <p>Extracción de datos directamente de las plataformas activas del mercado guatemalteco. Siempre resultados actuales, no datos viejos.</p>
+      </div>
+      <div class="tech-card">
+        <div class="icon">💬</div>
+        <h4>Telegram Bot</h4>
+        <p>Entrega inmediata de resultados al chat de Telegram del cliente. Funciona en cualquier teléfono, 24/7, sin aplicaciones adicionales.</p>
+      </div>
+      <div class="tech-card">
+        <div class="icon">📊</div>
+        <h4>Google Sheets (Plan Pro+)</h4>
+        <p>Historial automático de cada búsqueda. Cada resultado queda registrado para consulta futura y análisis del mercado.</p>
+      </div>
+      <div class="tech-card">
+        <div class="icon">🏠</div>
+        <h4>MLS Interno (Plan Agencia)</h4>
+        <p>Portal propio donde los agentes suben sus propiedades. El sistema hace auto-match con búsquedas activas automáticamente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ HYDROX -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Por qué Hydrox</span>
+      <h2>Lo que te ahorra en tiempo y esfuerzo.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <h3>Sin horas de búsqueda manual</h3>
+        <p>Buscar en 4 plataformas diferentes, comparar precios y filtrar resultados irrelevantes toma horas. Hydrox lo hace en minutos.</p>
+      </div>
+      <div class="why-item reveal">
+        <h3>Sin llamadas para preguntar si está disponible</h3>
+        <p>En el Plan Pro, el sistema verifica automáticamente la disponibilidad de cada propiedad antes de enviártela.</p>
+      </div>
+      <div class="why-item reveal">
+        <h3>Sin resultados que no tienen nada que ver</h3>
+        <p>La IA no te manda todo lo que encontró. Selecciona solo los 3 que realmente coinciden con tu zona, presupuesto y necesidades.</p>
+      </div>
+      <div class="why-item reveal">
+        <h3>Sin depender del horario de nadie</h3>
+        <p>El sistema funciona 24/7. Envías tu solicitud cuando quieras y el resultado llega a tu Telegram en minutos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>¿Listo para ver cómo funciona con tu búsqueda?</h2>
+      <p>Pruébalo ahora. En minutos tienes tus 3 mejores opciones en Guatemala.</p>
+      <a href="contacto.html" class="btn btn-pri btn-lg">Iniciar mi búsqueda →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+        <p>Automatización inteligente para pymes. Sistema RE — Buscador de propiedades en Guatemala.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Producto</h5>
+        <ul>
+          <li><a href="como-funciona.html">Cómo funciona</a></li>
+          <li><a href="index.html#fuentes">Fuentes activas</a></li>
+          <li><a href="planes.html">Planes y precios</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="contacto.html">Buscar propiedad</a></li>
+          <li><a href="mailto:servicioshydrox@gmail.com">servicioshydrox@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Hydrox · Automatización Inteligente para Pymes</span>
+      <span class="mono">HYDROX B&amp;R AI · v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

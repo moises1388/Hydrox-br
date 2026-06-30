@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Planes y precios de Hydrox B&R AI. Básico, Pro, Agencia y Empresa. Búsqueda automática de propiedades en Guatemala.">
+<title>Planes — Hydrox B&R AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="icon" href="assets/logo-verde.png" type="image/png">
+<style>
+  /* Tabla comparativa */
+  .compare-table { width:100%; border-collapse:collapse; margin-top:52px; }
+  .compare-table th, .compare-table td { padding:14px 18px; text-align:left; border-bottom:1px solid var(--borde); font-size:14.5px; }
+  .compare-table thead th { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--verde); background:var(--hueso); }
+  .compare-table thead th:first-child { color:var(--piedra-suave); }
+  .compare-table tbody tr:hover td { background:var(--hueso); }
+  .compare-table .check { color:var(--verde-claro); font-size:16px; }
+  .compare-table .dash  { color:var(--borde); }
+  .compare-table .hl td { background:rgba(30,122,77,.04); }
+
+  /* FAQ */
+  .faq-list { display:flex; flex-direction:column; gap:0; max-width:720px; }
+  .faq-item { border-bottom:1px solid var(--borde); }
+  .faq-q {
+    width:100%; background:none; border:none; text-align:left; cursor:pointer;
+    padding:20px 0; display:flex; justify-content:space-between; align-items:center;
+    font-size:16px; font-weight:600; color:var(--tinta); gap:20px;
+  }
+  .faq-q .ico { font-size:20px; color:var(--verde); flex-shrink:0; transition:transform .25s; }
+  .faq-item.open .faq-q .ico { transform:rotate(45deg); }
+  .faq-a { display:none; padding:0 0 20px; color:var(--piedra); font-size:15px; line-height:1.7; font-weight:300; }
+  .faq-item.open .faq-a { display:block; }
+
+  @media(max-width:720px){
+    .compare-table { font-size:13px; }
+    .compare-table th,.compare-table td { padding:11px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+      <div class="brand-text">
+        <strong>Hydrox B&amp;R</strong>
+        <small>AI · GUATEMALA</small>
+      </div>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html#como-funciona">Cómo funciona</a>
+      <a href="index.html#fuentes">Fuentes</a>
+      <a href="planes.html">Planes</a>
+      <a href="contacto.html" class="btn btn-pri">Buscar mi propiedad</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- INNER HERO -->
+<section class="inner-hero">
+  <div class="wrap">
+    <span class="eyebrow">Planes y precios</span>
+    <h1>Elige el plan que necesitas.</h1>
+    <p>Todos los planes incluyen búsqueda automática, análisis por IA y entrega a Telegram. Escala cuando estés listo.</p>
+  </div>
+</section>
+
+<!-- PLANES CARDS -->
+<section>
+  <div class="wrap">
+    <div class="planes-grid">
+
+      <div class="plan-card reveal">
+        <div class="plan-tier">Básico</div>
+        <div class="plan-price">$29–49<small> /mes</small></div>
+        <div class="plan-tagline">Ideal para comprador o arrendatario que quiere resultados rápidos.</div>
+        <ul class="plan-features">
+          <li>Búsqueda en 4 fuentes simultáneas</li>
+          <li>Top 3 propiedades elegidas por Claude AI</li>
+          <li>Entrega instantánea por Telegram</li>
+          <li>Precio, tamaño, fotos y contacto</li>
+          <li>Hasta 15 búsquedas por mes</li>
+          <li>Formulario de solicitud incluido</li>
+        </ul>
+        <a href="contacto.html" class="btn btn-sec" style="text-align:center">Empezar →</a>
+      </div>
+
+      <div class="plan-card featured reveal">
+        <div class="plan-badge">Más popular</div>
+        <div class="plan-tier">Pro</div>
+        <div class="plan-price">$99<small> /mes</small></div>
+        <div class="plan-tagline">Para agentes activos que manejan varias búsquedas a la vez.</div>
+        <ul class="plan-features">
+          <li>Todo lo del Plan Básico</li>
+          <li>Hasta 30 búsquedas por mes</li>
+          <li>Entrega por WhatsApp y Email también</li>
+          <li>Verificación automática de disponibilidad</li>
+          <li>Historial de búsquedas en Google Sheets</li>
+          <li>Fuentes adicionales: OLX · Urbania GT</li>
+        </ul>
+        <a href="contacto.html" class="btn btn-pri" style="text-align:center">Empezar →</a>
+      </div>
+
+      <div class="plan-card reveal">
+        <div class="plan-tier">Agencia</div>
+        <div class="plan-price">$249<small> /mes</small></div>
+        <div class="plan-tagline">Para agencias con equipo propio y cartera de propiedades.</div>
+        <ul class="plan-features">
+          <li>Todo lo del Plan Pro</li>
+          <li>Portal de agentes para subir propiedades</li>
+          <li>MLS interno propio</li>
+          <li>Auto-match: búsquedas vs. tu cartera</li>
+          <li>Verificador mensual de disponibilidad</li>
+          <li>Alertas automáticas de baja de precio</li>
+          <li>Búsquedas ilimitadas</li>
+        </ul>
+        <a href="contacto.html" class="btn btn-sec" style="text-align:center">Empezar →</a>
+      </div>
+
+      <div class="plan-card reveal">
+        <div class="plan-tier">Empresa</div>
+        <div class="plan-price">$499+<small> /mes</small></div>
+        <div class="plan-tagline">Solución completa para compañías inmobiliarias.</div>
+        <ul class="plan-features">
+          <li>Todo lo del Plan Agencia</li>
+          <li>Multi-agente con dashboard centralizado</li>
+          <li>Monitoreo mensual de todas las fuentes</li>
+          <li>CRM básico integrado</li>
+          <li>Reportes automáticos de mercado por zona</li>
+          <li>Scraping expandido: 6+ fuentes</li>
+          <li>Sistema completamente automatizado</li>
+          <li>Soporte prioritario</li>
+        </ul>
+        <a href="contacto.html" class="btn btn-sec" style="text-align:center">Contactar →</a>
+      </div>
+
+    </div>
+
+    <!-- Tabla comparativa -->
+    <div class="reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Función</th>
+            <th>Básico</th>
+            <th>Pro</th>
+            <th>Agencia</th>
+            <th>Empresa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Búsquedas / mes</td><td>15</td><td>30</td><td>Ilimitadas</td><td>Ilimitadas</td></tr>
+          <tr class="hl"><td>Fuentes activas</td><td>4</td><td>6</td><td>6</td><td>6+</td></tr>
+          <tr><td>Top 3 por IA (Claude)</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr class="hl"><td>Entrega por Telegram</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Entrega por WhatsApp</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr class="hl"><td>Entrega por Email</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Verificación disponibilidad</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr class="hl"><td>Historial de búsquedas</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Portal de agentes + MLS</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr class="hl"><td>Alertas baja de precio</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Dashboard multi-agente</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td></tr>
+          <tr class="hl"><td>CRM integrado</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td></tr>
+          <tr><td>Reportes de mercado por zona</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="fuentes-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Lo que más nos preguntan.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">¿Cómo recibo los resultados?<span class="ico">+</span></button>
+        <div class="faq-a">Los resultados llegan directamente a tu Telegram en minutos. En los planes Pro, Agencia y Empresa también puedes recibirlos por WhatsApp y Email.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Qué es el Telegram Chat ID?<span class="ico">+</span></button>
+        <div class="faq-a">Es el número que identifica tu cuenta de Telegram. Lo necesitamos para enviarte los resultados. Puedes obtenerlo hablando con el bot @userinfobot en Telegram: escríbele "start" y te responderá con tu ID.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Puedo probar el servicio antes de pagar?<span class="ico">+</span></button>
+        <div class="faq-a">Sí. Contáctanos por Telegram o email para una búsqueda de demostración sin costo. Queremos que veas los resultados antes de comprometerte.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cuánto tarda en llegar mi Top 3?<span class="ico">+</span></button>
+        <div class="faq-a">Normalmente entre 2 y 5 minutos desde que envías tu solicitud. El sistema hace el scraping, el análisis de IA y el envío de forma automática.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Las propiedades son verificadas?<span class="ico">+</span></button>
+        <div class="faq-a">Las propiedades son extraídas en tiempo real de plataformas activas. En el Plan Pro y superiores, el sistema también puede verificar automáticamente la disponibilidad contactando al vendedor.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>¿Tienes dudas sobre qué plan elegir?</h2>
+      <p>Escríbenos y te recomendamos el plan que mejor se adapta a tu caso. Sin presión.</p>
+      <a href="mailto:servicioshydrox@gmail.com" class="btn btn-pri btn-lg">Escribirnos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+        <p>Automatización inteligente para pymes. Sistema RE — Buscador de propiedades en Guatemala.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Producto</h5>
+        <ul>
+          <li><a href="como-funciona.html">Cómo funciona</a></li>
+          <li><a href="index.html#fuentes">Fuentes activas</a></li>
+          <li><a href="planes.html">Planes y precios</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="contacto.html">Buscar propiedad</a></li>
+          <li><a href="mailto:servicioshydrox@gmail.com">servicioshydrox@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Hydrox · Automatización Inteligente para Pymes</span>
+      <span class="mono">HYDROX B&amp;R AI · v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script>
+  // FAQ accordion (solo en esta página)
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

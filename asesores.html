@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Asesores AI de Hydrox B&R. Consulta con expertos en Marketing, Legal, Finanzas, Tecnología y Ventas inmobiliarias en Guatemala.">
+<title>Asesores AI — Hydrox B&R</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="icon" href="assets/logo-verde.png" type="image/png">
+<style>
+  /* ── ADVISORS GRID ─────────────────────────────────────────────── */
+  .advisors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 0;
+  }
+  .advisor-card {
+    background: var(--hueso);
+    border: 2px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 32px 28px;
+    cursor: pointer;
+    transition: border-color .25s, box-shadow .25s, transform .2s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+  .advisor-card:hover {
+    border-color: var(--verde-claro);
+    box-shadow: 0 12px 36px -16px rgba(30,122,77,.25);
+    transform: translateY(-3px);
+  }
+  .advisor-card.selected {
+    border-color: var(--verde);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(30,122,77,.12);
+    transform: translateY(-3px);
+  }
+  .advisor-card.selected::after {
+    content: '✓ Seleccionado';
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--verde);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .advisor-icon {
+    font-size: 38px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .advisor-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--tinta);
+  }
+  .advisor-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--verde);
+    font-weight: 700;
+  }
+  .advisor-desc {
+    color: var(--piedra);
+    font-size: 14.5px;
+    font-weight: 300;
+    line-height: 1.65;
+    flex: 1;
+  }
+  .advisor-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .advisor-tag {
+    background: rgba(30,122,77,.08);
+    color: var(--verde-profundo);
+    border-radius: 6px;
+    padding: 3px 9px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .btn-consult {
+    margin-top: 12px;
+    background: var(--verde-profundo);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+    font-family: inherit;
+    text-align: center;
+  }
+  .btn-consult:hover { background: var(--verde); }
+
+  /* ── CONSULT SECTION ──────────────────────────────────────────── */
+  .consult-wrapper {
+    margin-top: 56px;
+    padding: 48px;
+    background: var(--hueso);
+    border-radius: var(--radio-xl);
+    border: 1px solid var(--borde);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .consult-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--borde);
+  }
+  .consult-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--verde-profundo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+  .consult-header h3 { font-size: 22px; margin-bottom: 3px; }
+  .consult-header small {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--verde);
+    font-weight: 700;
+  }
+  .consult-field { margin-bottom: 20px; }
+  .consult-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tinta);
+    margin-bottom: 7px;
+    letter-spacing: .02em;
+  }
+  .consult-field textarea,
+  .consult-field input[type="text"] {
+    width: 100%;
+    border: 1.5px solid var(--borde);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--tinta);
+    background: #fff;
+    transition: border-color .2s;
+    resize: vertical;
+  }
+  .consult-field textarea:focus,
+  .consult-field input[type="text"]:focus {
+    outline: none;
+    border-color: var(--verde-claro);
+    box-shadow: 0 0 0 3px rgba(47,164,104,.12);
+  }
+  .consult-field textarea { min-height: 140px; }
+  .chat-id-hint {
+    font-size: 12.5px;
+    color: var(--piedra-suave);
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+  .chat-id-hint a { color: var(--verde-claro); text-decoration: underline; }
+  #advisor-submit-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  #advisor-submit-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+  }
+
+  /* ── SUCCESS SCREEN ───────────────────────────────────────────── */
+  .advisor-success {
+    text-align: center;
+    padding: 56px 32px;
+    max-width: 540px;
+    margin: 48px auto;
+    background: var(--hueso);
+    border-radius: var(--radio-xl);
+    border: 1px solid var(--borde);
+  }
+  .advisor-success .success-icon { font-size: 56px; margin-bottom: 20px; }
+  .advisor-success h2 { font-size: 28px; margin-bottom: 12px; }
+  .advisor-success p { color: var(--piedra); font-size: 16px; font-weight: 300; line-height: 1.7; }
+  .advisor-success .btn { margin-top: 28px; }
+
+  /* ── HOW IT WORKS ─────────────────────────────────────────────── */
+  .advisor-how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .advisor-how-item {
+    text-align: center;
+    padding: 32px 20px;
+    background: var(--hueso);
+    border-radius: var(--radio);
+    border: 1px solid var(--borde);
+  }
+  .advisor-how-item .how-icon { font-size: 32px; margin-bottom: 14px; }
+  .advisor-how-item h4 { font-size: 18px; margin-bottom: 8px; }
+  .advisor-how-item p { color: var(--piedra); font-size: 14px; font-weight: 300; line-height: 1.65; }
+
+  /* ── NO ADVISOR SELECTED ──────────────────────────────────────── */
+  .consult-placeholder {
+    text-align: center;
+    padding: 40px;
+    color: var(--piedra-suave);
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 48px;
+    border: 2px dashed var(--borde);
+    border-radius: var(--radio);
+  }
+  .consult-placeholder .ph-icon { font-size: 40px; margin-bottom: 12px; }
+
+  @media(max-width:840px) {
+    .advisors-grid { grid-template-columns: repeat(2, 1fr); }
+    .advisor-how-grid { grid-template-columns: 1fr; }
+  }
+  @media(max-width:560px) {
+    .advisors-grid { grid-template-columns: 1fr; }
+    .consult-wrapper { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+      <div class="brand-text">
+        <strong>Hydrox B&amp;R</strong>
+        <small>AI · GUATEMALA</small>
+      </div>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html#como-funciona">Cómo funciona</a>
+      <a href="index.html#fuentes">Fuentes</a>
+      <a href="planes.html">Planes</a>
+      <a href="asesores.html">Asesores AI</a>
+      <a href="contacto.html" class="btn btn-pri">Buscar mi propiedad</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- INNER HERO -->
+<section class="inner-hero">
+  <div class="wrap">
+    <span class="eyebrow">Asesores especializados</span>
+    <h1>Tu equipo de expertos,<br>disponible 24/7.</h1>
+    <p>Consulta con asesores especializados en Marketing, Legal, Finanzas, Tecnología y Ventas inmobiliarias. Respuesta en minutos, directo a tu Telegram.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS (3 steps) -->
+<section style="padding-bottom: 0">
+  <div class="wrap">
+    <div class="advisor-how-grid reveal">
+      <div class="advisor-how-item">
+        <div class="how-icon">👆</div>
+        <h4>Elige tu asesor</h4>
+        <p>Selecciona el perfil especializado que mejor responde a tu consulta.</p>
+      </div>
+      <div class="advisor-how-item">
+        <div class="how-icon">💬</div>
+        <h4>Escribe tu pregunta</h4>
+        <p>Describe lo que necesitas saber. Sin límites de extensión.</p>
+      </div>
+      <div class="advisor-how-item">
+        <div class="how-icon">📱</div>
+        <h4>Recibe tu respuesta</h4>
+        <p>La IA analiza tu consulta y te responde en Telegram en 1–2 minutos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVISOR CARDS + FORM -->
+<section>
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <span class="eyebrow">Nuestros asesores</span>
+      <h2>Elige el experto que necesitas.</h2>
+      <p>Cada asesor tiene una especialidad distinta y está entrenado con conocimiento del mercado inmobiliario guatemalteco.</p>
+    </div>
+
+    <!-- 5 Advisor Cards -->
+    <div class="advisors-grid reveal" id="advisors-grid">
+
+      <div class="advisor-card" data-perfil="marketing" data-nombre="Ana Sofía" data-icon="📢" data-rol="Asesora de Marketing">
+        <div class="advisor-icon">📢</div>
+        <div class="advisor-name">Ana Sofía</div>
+        <div class="advisor-role">Marketing Inmobiliario</div>
+        <p class="advisor-desc">Estrategias digitales, redes sociales, captación de clientes y publicidad en portales para agentes y agencias en Guatemala.</p>
+        <div class="advisor-tags">
+          <span class="advisor-tag">Social Media</span>
+          <span class="advisor-tag">Portales</span>
+          <span class="advisor-tag">Captación</span>
+        </div>
+        <button class="btn-consult">Consultar →</button>
+      </div>
+
+      <div class="advisor-card" data-perfil="legal" data-nombre="Lic. Marco Hernández" data-icon="⚖️" data-rol="Asesor Legal">
+        <div class="advisor-icon">⚖️</div>
+        <div class="advisor-name">Lic. Marco Hernández</div>
+        <div class="advisor-role">Legal Inmobiliario</div>
+        <p class="advisor-desc">Contratos de compraventa y arrendamiento, Registro General de la Propiedad, trámites notariales y leyes inmobiliarias de Guatemala.</p>
+        <div class="advisor-tags">
+          <span class="advisor-tag">Contratos</span>
+          <span class="advisor-tag">Registro</span>
+          <span class="advisor-tag">Notarial</span>
+        </div>
+        <button class="btn-consult">Consultar →</button>
+      </div>
+
+      <div class="advisor-card" data-perfil="finanzas" data-nombre="Roberto Méndez" data-icon="💰" data-rol="Asesor de Finanzas">
+        <div class="advisor-icon">💰</div>
+        <div class="advisor-name">Roberto Méndez</div>
+        <div class="advisor-role">Finanzas e Inversión</div>
+        <p class="advisor-desc">Análisis de rentabilidad (ROI, cap rate), créditos hipotecarios en Guatemala, comparación de mercados y oportunidades de inversión por zona.</p>
+        <div class="advisor-tags">
+          <span class="advisor-tag">ROI</span>
+          <span class="advisor-tag">Hipotecas</span>
+          <span class="advisor-tag">Inversión</span>
+        </div>
+        <button class="btn-consult">Consultar →</button>
+      </div>
+
+      <div class="advisor-card" data-perfil="tecnologia" data-nombre="David García" data-icon="⚙️" data-rol="Asesor de Tecnología">
+        <div class="advisor-icon">⚙️</div>
+        <div class="advisor-name">David García</div>
+        <div class="advisor-role">Tecnología para Agencias</div>
+        <p class="advisor-desc">CRM inmobiliario, automatización de procesos, portales MLS, herramientas de marketing digital e inteligencia artificial para bienes raíces.</p>
+        <div class="advisor-tags">
+          <span class="advisor-tag">CRM</span>
+          <span class="advisor-tag">Automatización</span>
+          <span class="advisor-tag">IA</span>
+        </div>
+        <button class="btn-consult">Consultar →</button>
+      </div>
+
+      <div class="advisor-card" data-perfil="ventas" data-nombre="Sofía Contreras" data-icon="🤝" data-rol="Asesora de Ventas">
+        <div class="advisor-icon">🤝</div>
+        <div class="advisor-name">Sofía Contreras</div>
+        <div class="advisor-role">Ventas y Negociación</div>
+        <p class="advisor-desc">Técnicas de cierre, manejo de objeciones, negociación de precios y gestión efectiva de compradores y vendedores en el mercado guatemalteco.</p>
+        <div class="advisor-tags">
+          <span class="advisor-tag">Cierre</span>
+          <span class="advisor-tag">Negociación</span>
+          <span class="advisor-tag">Objeciones</span>
+        </div>
+        <button class="btn-consult">Consultar →</button>
+      </div>
+
+    </div>
+
+    <!-- Placeholder (shown before selecting an advisor) -->
+    <div id="consult-placeholder" class="consult-placeholder reveal">
+      <div class="ph-icon">👆</div>
+      <p>Selecciona un asesor arriba para comenzar tu consulta.</p>
+    </div>
+
+    <!-- Consultation Form (hidden until advisor selected) -->
+    <div id="consult-section" style="display:none">
+      <div class="consult-wrapper">
+        <div class="consult-header">
+          <div class="consult-avatar" id="consult-avatar">📢</div>
+          <div>
+            <h3 id="consult-advisor-name">Ana Sofía</h3>
+            <small id="consult-advisor-role">Marketing Inmobiliario</small>
+          </div>
+        </div>
+
+        <form id="advisor-form" novalidate>
+          <input type="hidden" id="perfil-input" name="perfil_asesor" value="">
+          <input type="hidden" id="usercode-input" name="user_code" value="">
+
+          <div class="consult-field">
+            <label for="pregunta-input">Tu consulta</label>
+            <textarea id="pregunta-input" name="pregunta" required
+              placeholder="Describe tu pregunta o situación. Cuanto más detalle des, mejor será la respuesta…"></textarea>
+          </div>
+
+          <div class="consult-field">
+            <label for="chat-id-input">Tu Telegram Chat ID <span style="font-weight:300;color:var(--piedra-suave)">(para recibir la respuesta)</span></label>
+            <input type="text" id="chat-id-input" name="telegram_chat_id" required
+              placeholder="Ej: 7494138882">
+            <p class="chat-id-hint">
+              ¿No sabes tu Chat ID? Abre Telegram, escríbele a
+              <strong>@userinfobot</strong> y responde "start". Te dará tu ID en segundos.
+            </p>
+          </div>
+
+          <button type="submit" class="btn btn-pri btn-lg" id="advisor-submit-btn">
+            Enviar consulta →
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Success Screen -->
+    <div id="advisor-success" style="display:none">
+      <div class="advisor-success">
+        <div class="success-icon">✅</div>
+        <h2>Consulta enviada</h2>
+        <p>Tu asesor está analizando tu pregunta. Recibirás la respuesta directamente en tu Telegram en <strong>1–2 minutos</strong>.</p>
+        <p style="margin-top:16px; font-size:14px; color:var(--piedra-suave)">Si no la recibes en 5 minutos, revisa que tu Chat ID sea correcto o escríbenos a <a href="mailto:servicioshydrox@gmail.com" style="color:var(--verde-claro)">servicioshydrox@gmail.com</a>.</p>
+        <a href="asesores.html" class="btn btn-sec">Hacer otra consulta →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="fuentes-section" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>¿También buscas una propiedad?</h2>
+      <p>Usa nuestro buscador automático: analizamos 4 fuentes y te enviamos las 3 mejores opciones en minutos.</p>
+      <a href="contacto.html" class="btn btn-pri btn-lg">Buscar mi propiedad →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+        <p>Automatización inteligente para pymes. Sistema RE — Buscador de propiedades en Guatemala.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Producto</h5>
+        <ul>
+          <li><a href="como-funciona.html">Cómo funciona</a></li>
+          <li><a href="index.html#fuentes">Fuentes activas</a></li>
+          <li><a href="planes.html">Planes y precios</a></li>
+          <li><a href="asesores.html">Asesores AI</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="contacto.html">Buscar propiedad</a></li>
+          <li><a href="mailto:servicioshydrox@gmail.com">servicioshydrox@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Hydrox · Automatización Inteligente para Pymes</span>
+      <span class="mono">HYDROX B&amp;R AI · v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script>
+/* ── ADVISOR PAGE LOGIC ─────────────────────────────────────────── */
+const ADVISOR_WEBHOOK = 'https://hook.us2.make.com/i4elgx9w0k64dmqkclu8lybym1x61gsx';
+
+// Pre-fill user code from localStorage
+document.getElementById('usercode-input').value =
+  localStorage.getItem('hx_user_code') || '';
+
+// Pre-fill telegram chat ID if previously saved
+const savedChatId = localStorage.getItem('hx_telegram_chat_id');
+if (savedChatId) document.getElementById('chat-id-input').value = savedChatId;
+
+// Advisor card selection
+document.querySelectorAll('.advisor-card').forEach(card => {
+  card.addEventListener('click', () => {
+    // Deselect all
+    document.querySelectorAll('.advisor-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+
+    // Update hidden inputs
+    document.getElementById('perfil-input').value = card.dataset.perfil;
+
+    // Update form header
+    document.getElementById('consult-avatar').textContent  = card.dataset.icon;
+    document.getElementById('consult-advisor-name').textContent = card.dataset.nombre;
+    document.getElementById('consult-advisor-role').textContent = card.dataset.rol;
+
+    // Show form, hide placeholder
+    document.getElementById('consult-placeholder').style.display = 'none';
+    const section = document.getElementById('consult-section');
+    section.style.display = 'block';
+
+    // Smooth scroll to form
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Form submit
+document.getElementById('advisor-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const pregunta  = document.getElementById('pregunta-input').value.trim();
+  const chatId    = document.getElementById('chat-id-input').value.trim();
+  const perfil    = document.getElementById('perfil-input').value;
+
+  // Simple validation
+  if (!pregunta) {
+    document.getElementById('pregunta-input').style.borderColor = '#e55';
+    document.getElementById('pregunta-input').focus();
+    return;
+  }
+  if (!chatId) {
+    document.getElementById('chat-id-input').style.borderColor = '#e55';
+    document.getElementById('chat-id-input').focus();
+    return;
+  }
+
+  // Save chat ID for next time
+  localStorage.setItem('hx_telegram_chat_id', chatId);
+
+  const btn = document.getElementById('advisor-submit-btn');
+  btn.textContent = 'Enviando consulta…';
+  btn.disabled = true;
+
+  const payload = new URLSearchParams({
+    perfil_asesor:     perfil,
+    pregunta:          pregunta,
+    telegram_chat_id:  chatId,
+    user_code:         document.getElementById('usercode-input').value || 'DIRECTO',
+    fecha:             new Date().toISOString(),
+    fuente:            'sitio-web'
+  }).toString();
+
+  try {
+    await fetch(ADVISOR_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: payload,
+      mode: 'no-cors'
+    });
+
+    // Show success (assume sent since no-cors = opaque)
+    document.getElementById('consult-section').style.display = 'none';
+    document.getElementById('advisor-success').style.display = 'block';
+    document.getElementById('advisor-success').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  } catch (err) {
+    btn.textContent = 'Error — intenta de nuevo';
+    btn.disabled = false;
+    console.error('Advisor webhook error:', err);
+  }
+});
+</script>
+</body>
+</html>
