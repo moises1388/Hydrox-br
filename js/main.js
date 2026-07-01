@@ -126,7 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => { if (current > 0) goTo(current - 1); })
   );
 
-  // Opciones personalizadas (radio / checkbox)
+  // Track zona selections in a plain Set — no dependency on :checked
+  // (display:none inputs + change event unreliable in Safari/iOS)
+  const zonaSet = new Set();
+
+  // Opciones personalizadas (radio)
   form.querySelectorAll('.radio-opt').forEach(opt => {
     opt.addEventListener('click', () => {
       const name = opt.querySelector('input').name;
@@ -138,10 +142,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Opciones personalizadas (checkbox zona)
   form.querySelectorAll('.check-opt').forEach(opt => {
     const input = opt.querySelector('input');
-    input.addEventListener('change', () => {
-      opt.classList.toggle('sel', input.checked);
+    opt.addEventListener('click', (e) => {
+      e.preventDefault(); // evita activación nativa del label
+      const val = input.value;
+      if (zonaSet.has(val)) {
+        zonaSet.delete(val);
+        input.checked = false;
+        opt.classList.remove('sel');
+      } else {
+        zonaSet.add(val);
+        input.checked = true;
+        opt.classList.add('sel');
+      }
     });
   });
 
@@ -158,9 +173,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Grupos de radio/checkbox obligatorios (tipo, modalidad, zona)
     step.querySelectorAll('[data-required]').forEach(group => {
-      const checked = group.querySelectorAll('input:checked').length > 0;
-      group.classList.toggle('group-error', !checked);
-      if (!checked) ok = false;
+      const isCheckGroup = group.classList.contains('check-group');
+      const hasSelection = isCheckGroup
+        ? zonaSet.size > 0
+        : group.querySelectorAll('input:checked').length > 0;
+      group.classList.toggle('group-error', !hasSelection);
+      if (!hasSelection) ok = false;
     });
 
     return ok;
@@ -202,8 +220,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = {};
     fd.forEach((v, k) => { data[k] = v; });
 
-    // Zonas: checkboxes + campo libre combinados en un string
-    const zonaValues = [...form.querySelectorAll('input[name="zona"]:checked')].map(i => i.value);
+    // Zonas: del Set JS + campo libre (no depende de :checked ni display:none)
+    const zonaValues = [...zonaSet];
     const zonaOtra = (form.querySelector('#zona_otra')?.value || '').trim();
     if (zonaOtra) zonaValues.push(zonaOtra);
     data.zona = zonaValues.join(', ');
