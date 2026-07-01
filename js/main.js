@@ -217,12 +217,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = {};
     fd.forEach((v, k) => { data[k] = v; });
 
-    // Zonas: del Set JS + campo libre (no depende de :checked ni display:none)
+    // Zonas: del Set JS + hasta 2 campos libres
     const zonaValues = [...zonaSet];
-    const zonaOtra = (form.querySelector('#zona_otra')?.value || '').trim();
-    if (zonaOtra) zonaValues.push(zonaOtra);
+    const zonaOtra  = (form.querySelector('#zona_otra')?.value   || '').trim();
+    const zonaOtra2 = (form.querySelector('#zona_otra_2')?.value || '').trim();
+    if (zonaOtra)  zonaValues.push(zonaOtra);
+    if (zonaOtra2) zonaValues.push(zonaOtra2);
     data.zona = zonaValues.join(', ');
-    delete data.zona_otra; // ya está incluido en data.zona
+    delete data.zona_otra;
+    delete data.zona_otra_2;
 
     // Metadata
     data.fecha_solicitud = new Date().toISOString();
