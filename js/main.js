@@ -142,19 +142,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Opciones personalizadas (checkbox zona)
+  // Opciones personalizadas (checkbox zona) — divs, sin comportamiento nativo de label
   form.querySelectorAll('.check-opt').forEach(opt => {
     const input = opt.querySelector('input');
-    opt.addEventListener('click', (e) => {
-      e.preventDefault(); // evita activación nativa del label
+    opt.addEventListener('click', () => {
       const val = input.value;
       if (zonaSet.has(val)) {
         zonaSet.delete(val);
-        input.checked = false;
         opt.classList.remove('sel');
       } else {
         zonaSet.add(val);
-        input.checked = true;
         opt.classList.add('sel');
       }
     });
