@@ -180,7 +180,27 @@
               </div>
               <div class="field">
                 <label>Presupuesto máximo <span class="req">*</span></label>
-                <input type="text" name="presupuesto" placeholder="Ej. $150,000 o Q1,200,000" required>
+                <select name="presupuesto_rango" id="presupuesto_rango" required>
+                  <option value="" disabled selected>Selecciona un rango…</option>
+                  <optgroup label="🏠 Compra">
+                    <option value="Hasta $50,000">Hasta $50,000</option>
+                    <option value="$50,000 - $100,000">$50,000 – $100,000</option>
+                    <option value="$100,000 - $200,000">$100,000 – $200,000</option>
+                    <option value="$200,000 - $350,000">$200,000 – $350,000</option>
+                    <option value="$350,000 - $500,000">$350,000 – $500,000</option>
+                    <option value="Más de $500,000">Más de $500,000</option>
+                  </optgroup>
+                  <optgroup label="🔑 Alquiler (mensual)">
+                    <option value="Hasta $500/mes">Hasta $500/mes</option>
+                    <option value="$500 - $1,000/mes">$500 – $1,000/mes</option>
+                    <option value="$1,000 - $2,500/mes">$1,000 – $2,500/mes</option>
+                    <option value="$2,500 - $5,000/mes">$2,500 – $5,000/mes</option>
+                    <option value="$5,000 - $15,000/mes">$5,000 – $15,000/mes</option>
+                    <option value="Más de $15,000/mes">Más de $15,000/mes</option>
+                  </optgroup>
+                  <option value="personalizado">✏️ Otro monto (escribirlo)</option>
+                </select>
+                <input type="text" name="presupuesto_custom" id="presupuesto_custom" placeholder="Ej. $150,000 o Q1,200,000" style="margin-top:8px; width:100%; display:none">
               </div>
               <div class="field">
                 <label>Tamaño / extensión <span style="color:var(--piedra-suave);">(opcional)</span></label>

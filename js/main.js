@@ -130,6 +130,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // (display:none inputs + change event unreliable in Safari/iOS)
   const zonaSet = new Set();
 
+  // Presupuesto: rango guiado + campo libre solo si eligen "personalizado"
+  const presuRango  = form.querySelector('#presupuesto_rango');
+  const presuCustom = form.querySelector('#presupuesto_custom');
+  if (presuRango && presuCustom) {
+    presuRango.addEventListener('change', () => {
+      const esCustom = presuRango.value === 'personalizado';
+      presuCustom.style.display = esCustom ? 'block' : 'none';
+      if (esCustom) presuCustom.focus();
+    });
+  }
+
   // Opciones personalizadas (radio)
   form.querySelectorAll('.radio-opt').forEach(opt => {
     opt.addEventListener('click', () => {
@@ -167,6 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
       el.style.borderColor = '';
       if (!el.value.trim()) { el.style.borderColor = '#e55'; ok = false; }
     });
+
+    // Presupuesto personalizado: si eligieron "otro monto", el texto es obligatorio
+    const rangoSel = step.querySelector('#presupuesto_rango');
+    if (rangoSel && rangoSel.value === 'personalizado') {
+      const custom = step.querySelector('#presupuesto_custom');
+      if (custom) {
+        custom.style.borderColor = '';
+        if (!custom.value.trim()) { custom.style.borderColor = '#e55'; ok = false; }
+      }
+    }
 
     // Grupos de radio/checkbox obligatorios (tipo, modalidad, zona)
     step.querySelectorAll('[data-required]').forEach(group => {
@@ -226,6 +247,13 @@ document.addEventListener('DOMContentLoaded', () => {
     data.zona = zonaValues.join(', ');
     delete data.zona_otra;
     delete data.zona_otra_2;
+
+    // Presupuesto: rango elegido o monto personalizado
+    const rangoVal  = (form.querySelector('#presupuesto_rango')?.value  || '').trim();
+    const customVal = (form.querySelector('#presupuesto_custom')?.value || '').trim();
+    data.presupuesto = rangoVal === 'personalizado' ? customVal : rangoVal;
+    delete data.presupuesto_rango;
+    delete data.presupuesto_custom;
 
     // Metadata
     data.fecha_solicitud = new Date().toISOString();
