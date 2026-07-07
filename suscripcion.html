@@ -117,6 +117,11 @@
               <label>Correo electrónico <span class="req">*</span></label>
               <input type="email" name="correo" placeholder="tu@email.com" required>
             </div>
+            <div class="field">
+              <label>🧩 Sitios adicionales donde quieres que busquemos <span style="color:var(--piedra-suave);">(opcional · costo adicional mensual por sitio)</span></label>
+              <input type="text" name="sitios_extra" placeholder="Ej. www.mi-portal-favorito.com">
+              <div class="hint">Te cotizamos la integración en 24 horas junto con la activación de tu plan.</div>
+            </div>
             <button type="submit" class="btn btn-sec btn-lg" style="width:100%">Generar mi código de cliente →</button>
           </div>
         </div>
@@ -197,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nombre  = (fd.get('nombre')  || '').trim();
     const tel     = (fd.get('telefono')|| '').trim();
     const correo  = (fd.get('correo')  || '').trim();
+    const sitios  = (fd.get('sitios_extra') || '').trim() || 'Ninguno';
 
     const subject = `Suscripción ${plan} — Código ${code}`;
     const body =
@@ -210,6 +216,7 @@ Quiero activar mi suscripción. Mis datos:
 • Nombre: ${nombre}
 • Teléfono: ${tel}
 • Correo: ${correo}
+• Sitios adicionales donde quiero que busquen (costo extra): ${sitios}
 
 Adjunto el comprobante de la transferencia a Banco Industrial (cuenta 373-000430-0).
 
