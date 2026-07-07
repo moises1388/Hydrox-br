@@ -38,6 +38,7 @@
   @media(max-width:720px){
     .compare-table { font-size:13px; }
     .compare-table th,.compare-table td { padding:11px 10px; }
+    .pago-grid { grid-template-columns:1fr !important; }
   }
 </style>
 </head>
@@ -89,7 +90,7 @@
           <li>Hasta 15 búsquedas por mes</li>
           <li>Formulario de solicitud incluido</li>
         </ul>
-        <a href="contacto.html" class="btn btn-sec" style="text-align:center">Empezar →</a>
+        <a href="suscripcion.html?plan=Básico" class="btn btn-sec" style="text-align:center">Suscribirme →</a>
       </div>
 
       <div class="plan-card featured reveal">
@@ -105,7 +106,7 @@
           <li>Historial de búsquedas en Google Sheets</li>
           <li>Fuentes adicionales: OLX · Urbania GT</li>
         </ul>
-        <a href="contacto.html" class="btn btn-pri" style="text-align:center">Empezar →</a>
+        <a href="suscripcion.html?plan=Pro" class="btn btn-pri" style="text-align:center">Suscribirme →</a>
       </div>
 
       <div class="plan-card reveal">
@@ -121,7 +122,7 @@
           <li>Alertas automáticas de baja de precio</li>
           <li>Búsquedas ilimitadas</li>
         </ul>
-        <a href="contacto.html" class="btn btn-sec" style="text-align:center">Empezar →</a>
+        <a href="suscripcion.html?plan=Agencia" class="btn btn-sec" style="text-align:center">Suscribirme →</a>
       </div>
 
       <div class="plan-card reveal">
@@ -138,7 +139,7 @@
           <li>Sistema completamente automatizado</li>
           <li>Soporte prioritario</li>
         </ul>
-        <a href="contacto.html" class="btn btn-sec" style="text-align:center">Contactar →</a>
+        <a href="suscripcion.html?plan=Empresa" class="btn btn-sec" style="text-align:center">Suscribirme →</a>
       </div>
 
     </div>
@@ -175,6 +176,36 @@
   </div>
 </section>
 
+<!-- CÓMO PAGAR -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Formas de pago</span>
+      <h2>¿Cómo pago mi plan?</h2>
+    </div>
+    <div class="reveal pago-grid" style="background:var(--verde-profundo); color:#fff; border-radius:18px; padding:32px; display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;">
+      <div>
+        <h3 style="color:#fff; margin-bottom:14px">🏦 Transferencia bancaria</h3>
+        <p style="color:rgba(255,255,255,.85); font-size:14.5px; line-height:1.9; margin:0">
+          <strong>Banco Industrial</strong> · Cuenta Monetaria (Quetzales)<br>
+          Número: <strong style="font-family:'Space Mono',monospace">373-000430-0</strong><br>
+          A nombre de: <strong>HYDROX</strong><br>
+          <span style="font-size:12.5px; color:rgba(255,255,255,.7)">¿Pagas en dólares? Escríbenos y te damos la cuenta en USD.<br>💳 Próximamente: pago con tarjeta y suscripción automática.</span>
+        </p>
+      </div>
+      <div>
+        <p style="color:rgba(255,255,255,.85); font-size:14.5px; line-height:2; margin:0 0 16px">
+          1️⃣ Elige tu plan y llena el formulario de suscripción<br>
+          2️⃣ Recibe tu <strong>código de cliente</strong> al instante<br>
+          3️⃣ Transfiere y envía el comprobante a <strong>hydroxventas@gmail.com</strong><br>
+          4️⃣ En menos de <strong>24 horas</strong> tu plan queda activo
+        </p>
+        <a href="suscripcion.html" class="btn btn-pri" style="text-align:center">Iniciar mi suscripción →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="fuentes-section">
   <div class="wrap">
@@ -183,6 +214,10 @@
       <h2>Lo que más nos preguntan.</h2>
     </div>
     <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">¿Cómo pago mi plan?<span class="ico">+</span></button>
+        <div class="faq-a">Por transferencia a Banco Industrial, cuenta Monetaria en Quetzales 373-000430-0 a nombre de HYDROX. Llena el formulario de suscripción para recibir tu código de cliente, transfiere, y envía el comprobante con tu código a hydroxventas@gmail.com. Activamos tu plan en menos de 24 horas. Si prefieres pagar en dólares, escríbenos y te compartimos la cuenta en USD. El pago con tarjeta estará disponible próximamente.</div>
+      </div>
       <div class="faq-item">
         <button class="faq-q">¿Cómo recibo los resultados?<span class="ico">+</span></button>
         <div class="faq-a">Los resultados llegan directamente a tu Telegram en minutos. En los planes Pro, Agencia y Empresa también puedes recibirlos por WhatsApp y Email.</div>
@@ -249,7 +284,7 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=6" defer></script>
+<script src="js/main.js?v=7" defer></script>
 <script>
   // FAQ accordion (solo en esta página)
   document.querySelectorAll('.faq-q').forEach(q => {

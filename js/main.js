@@ -66,11 +66,25 @@ document.addEventListener('DOMContentLoaded', () => {
     return n;
   }
 
+  // Códigos VIP: acceso ilimitado (fundador + testers).
+  // Se activan visitando contacto.html?codigo=HX-XXXXXX una sola vez;
+  // quedan guardados en el navegador. Quitar de esta lista para desactivarlos.
+  const VIP_CODES = ['HX-FUNDADOR', 'HX-AMIGO01', 'HX-AMIGO02', 'HX-AMIGO03', 'HX-AMIGO04', 'HX-AMIGO05'];
+  const codigoURL = new URLSearchParams(window.location.search).get('codigo');
+  if (codigoURL && VIP_CODES.includes(codigoURL.toUpperCase().trim())) {
+    localStorage.setItem('hx_user_code', codigoURL.toUpperCase().trim());
+  }
+
   const userCode = getUserCode();
+  const esVIP = VIP_CODES.includes(userCode);
 
   // Mostrar aviso de plan antes del formulario si corresponde
   const planNotice = document.getElementById('plan-notice');
-  if (planNotice) {
+  if (planNotice && esVIP) {
+    planNotice.className = 'plan-notice';
+    planNotice.style.cssText = 'display:flex;background:#eaf6ef;border:1px solid #bfe3cd;border-radius:10px;padding:10px 14px;margin-bottom:14px;align-items:center;gap:8px;';
+    planNotice.innerHTML = `♾️ <strong>Acceso ilimitado activado</strong>&nbsp;· código ${userCode}`;
+  } else if (planNotice) {
     const cnt = getSearchCount();
     if (cnt >= PLAN_LIMIT) {
       planNotice.className = 'plan-notice limit';
@@ -286,12 +300,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const alertEl = document.getElementById('plan-alert');
       if (ucEl)   ucEl.textContent = userCode;
       if (fillEl) {
-        const pct = Math.min((newCount / PLAN_LIMIT) * 100, 100);
+        const pct = esVIP ? 100 : Math.min((newCount / PLAN_LIMIT) * 100, 100);
         fillEl.style.width  = pct + '%';
-        fillEl.className    = 'sc-fill' + (newCount >= PLAN_LIMIT ? ' sc-limit' : newCount >= PLAN_WARN ? ' sc-warn' : '');
+        fillEl.className    = 'sc-fill' + (esVIP ? '' : newCount >= PLAN_LIMIT ? ' sc-limit' : newCount >= PLAN_WARN ? ' sc-warn' : '');
       }
-      if (textEl) textEl.textContent = `${newCount} / ${PLAN_LIMIT} búsquedas del Plan Básico`;
-      if (alertEl) {
+      if (textEl) textEl.textContent = esVIP ? `♾️ Búsquedas ilimitadas · ${userCode}` : `${newCount} / ${PLAN_LIMIT} búsquedas del Plan Básico`;
+      if (alertEl && !esVIP) {
         if (newCount >= PLAN_LIMIT) {
           alertEl.innerHTML   = '🔴 Alcanzaste el límite. <a href="planes.html" class="alert-link">Actualizar plan →</a>';
           alertEl.className   = 'plan-alert limit';

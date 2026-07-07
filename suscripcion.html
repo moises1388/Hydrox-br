@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Suscríbete a Hydrox B&R AI. Elige tu plan, recibe tu código y activa tu cuenta en 24 horas.">
+<title>Suscripción — Hydrox B&R AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/componentes.css?v=3">
+<link rel="icon" href="assets/logo-verde.png" type="image/png">
+<style>
+  .sus-section { background:var(--hueso); padding:80px 0; }
+  .sus-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:52px; align-items:start; }
+  @media(max-width:860px){ .sus-grid { grid-template-columns:1fr; } }
+
+  .banco-card { background:var(--verde-profundo); color:#fff; border-radius:18px; padding:28px; }
+  .banco-card h3 { color:#fff; font-size:19px; margin-bottom:14px; }
+  .banco-card .dato { display:flex; justify-content:space-between; gap:14px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.14); font-size:14.5px; }
+  .banco-card .dato:last-of-type { border-bottom:none; }
+  .banco-card .dato b { font-family:'Space Mono',monospace; }
+  .banco-card .nota { margin-top:14px; font-size:12.5px; color:rgba(255,255,255,.75); line-height:1.6; }
+
+  .pasos-lista { margin-top:26px; }
+  .paso-item { display:flex; gap:12px; align-items:flex-start; margin-bottom:16px; }
+  .paso-item .dot { width:30px; height:30px; border-radius:10px; background:var(--verde-profundo); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+  .paso-item h4 { font-size:15px; margin-bottom:2px; }
+  .paso-item p { font-size:13.5px; color:var(--piedra-suave); margin:0; }
+
+  .sus-exito { display:none; background:#fff; border-radius:18px; padding:36px; text-align:center; box-shadow:0 10px 40px rgba(20,40,30,.08); }
+  .sus-exito .codigo-big { font-family:'Space Mono',monospace; font-size:30px; color:var(--verde-profundo); background:var(--hueso); border-radius:12px; padding:14px 22px; display:inline-block; margin:14px 0 6px; letter-spacing:2px; }
+  .sus-exito .aviso { font-size:13px; color:var(--piedra-suave); margin-bottom:20px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+      <div class="brand-text">
+        <strong>Hydrox B&amp;R</strong>
+        <small>AI · GUATEMALA</small>
+      </div>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html#como-funciona">Cómo funciona</a>
+      <a href="planes.html">Planes</a>
+      <a href="contacto.html" class="btn btn-pri">Buscar mi propiedad</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- INNER HERO -->
+<section class="inner-hero">
+  <div class="wrap">
+    <span class="eyebrow">Suscripción</span>
+    <h1>Activa tu plan Hydrox.</h1>
+    <p>Llena tus datos, realiza la transferencia y en menos de 24 horas tu plan queda activo.</p>
+  </div>
+</section>
+
+<section class="sus-section">
+  <div class="wrap sus-grid">
+
+    <!-- Info de pago -->
+    <div>
+      <div class="banco-card">
+        <h3>💳 Datos para transferencia</h3>
+        <div class="dato"><span>Banco</span><b>Banco Industrial</b></div>
+        <div class="dato"><span>Tipo de cuenta</span><b>Monetaria (Quetzales)</b></div>
+        <div class="dato"><span>Número de cuenta</span><b>373-000430-0</b></div>
+        <div class="dato"><span>A nombre de</span><b>HYDROX</b></div>
+        <div class="nota">💵 ¿Prefieres pagar en dólares? Escríbenos a hydroxventas@gmail.com y te compartimos la cuenta en USD.<br>💳 Muy pronto: pago con tarjeta de crédito/débito y suscripción automática.</div>
+      </div>
+
+      <div class="pasos-lista">
+        <div class="paso-item"><div class="dot">1</div><div><h4>Llena el formulario</h4><p>Con tus datos se genera tu código de cliente al instante.</p></div></div>
+        <div class="paso-item"><div class="dot">2</div><div><h4>Realiza la transferencia</h4><p>Por el monto del plan elegido, a la cuenta de Banco Industrial.</p></div></div>
+        <div class="paso-item"><div class="dot">3</div><div><h4>Envía tu comprobante</h4><p>Por correo a <strong>hydroxventas@gmail.com</strong> incluyendo tu código de cliente.</p></div></div>
+        <div class="paso-item"><div class="dot">4</div><div><h4>Activación en 24 horas</h4><p>Verificamos el pago y activamos tu plan. Te confirmamos por correo y Telegram.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Formulario de suscripción -->
+    <div>
+      <form id="sus-form">
+        <div class="form-card">
+          <div class="form-body" style="display:block">
+            <div class="field">
+              <label>Plan que deseas <span class="req">*</span></label>
+              <select name="plan" id="sus-plan" required>
+                <option value="" disabled selected>Elige tu plan…</option>
+                <option value="Básico ($29-49/mes)">Básico — $29–49/mes · 15 búsquedas</option>
+                <option value="Pro ($99/mes)">Pro — $99/mes · 30 búsquedas + WhatsApp</option>
+                <option value="Agencia ($249/mes)">Agencia — $249/mes · Ilimitado + MLS</option>
+                <option value="Empresa ($499+/mes)">Empresa — $499+/mes · Todo incluido</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Empresa <span style="color:var(--piedra-suave);">(opcional)</span></label>
+              <input type="text" name="empresa" placeholder="Nombre de tu empresa o agencia">
+            </div>
+            <div class="field">
+              <label>Nombre de quien usará el servicio <span class="req">*</span></label>
+              <input type="text" name="nombre" placeholder="Nombre completo" required>
+            </div>
+            <div class="field">
+              <label>Teléfono <span class="req">*</span></label>
+              <input type="text" name="telefono" placeholder="+502 5555-0000" required>
+            </div>
+            <div class="field">
+              <label>Correo electrónico <span class="req">*</span></label>
+              <input type="email" name="correo" placeholder="tu@email.com" required>
+            </div>
+            <button type="submit" class="btn btn-sec btn-lg" style="width:100%">Generar mi código de cliente →</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Éxito -->
+      <div class="sus-exito" id="sus-exito">
+        <div style="font-size:40px">💧</div>
+        <h3>¡Datos registrados!</h3>
+        <p>Tu código de cliente es:</p>
+        <div class="codigo-big" id="sus-codigo">HX-______</div>
+        <p class="aviso">Guárdalo — lo necesitas para el comprobante y para tus búsquedas.</p>
+        <p style="font-size:14.5px; margin-bottom:18px">Ahora realiza la transferencia y envíanos el comprobante con este código. En menos de <strong>24 horas</strong> activamos tu plan.</p>
+        <a id="sus-mailto" class="btn btn-pri btn-lg" href="#">📧 Enviar mis datos y comprobante →</a>
+        <p class="aviso" style="margin-top:12px">Se abrirá tu correo con el mensaje listo — solo adjunta la foto del comprobante.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-blanco.png" alt="Hydrox B&R AI">
+        <p>Automatización inteligente para pymes. Sistema RE — Buscador de propiedades en Guatemala.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Producto</h5>
+        <ul>
+          <li><a href="como-funciona.html">Cómo funciona</a></li>
+          <li><a href="planes.html">Planes y precios</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="contacto.html">Buscar propiedad</a></li>
+          <li><a href="mailto:hydroxventas@gmail.com">hydroxventas@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Hydrox · Automatización Inteligente para Pymes</span>
+      <span class="mono">HYDROX B&amp;R AI · v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=7" defer></script>
+<script defer>
+document.addEventListener('DOMContentLoaded', () => {
+  // Preseleccionar plan desde planes.html (?plan=Pro)
+  const planParam = new URLSearchParams(location.search).get('plan');
+  const planSel = document.getElementById('sus-plan');
+  if (planParam && planSel) {
+    [...planSel.options].forEach(o => { if (o.value.toLowerCase().startsWith(planParam.toLowerCase())) o.selected = true; });
+  }
+
+  const susForm = document.getElementById('sus-form');
+  if (!susForm) return;
+  susForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Reutiliza el código del navegador o genera uno nuevo
+    let code = localStorage.getItem('hx_user_code');
+    if (!code) {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      code = 'HX-' + Array.from({length: 6}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+      localStorage.setItem('hx_user_code', code);
+    }
+
+    const fd = new FormData(susForm);
+    const plan    = fd.get('plan')    || '';
+    const empresa = (fd.get('empresa') || '').trim() || 'N/A';
+    const nombre  = (fd.get('nombre')  || '').trim();
+    const tel     = (fd.get('telefono')|| '').trim();
+    const correo  = (fd.get('correo')  || '').trim();
+
+    const subject = `Suscripción ${plan} — Código ${code}`;
+    const body =
+`Hola equipo Hydrox,
+
+Quiero activar mi suscripción. Mis datos:
+
+• Código de cliente: ${code}
+• Plan: ${plan}
+• Empresa: ${empresa}
+• Nombre: ${nombre}
+• Teléfono: ${tel}
+• Correo: ${correo}
+
+Adjunto el comprobante de la transferencia a Banco Industrial (cuenta 373-000430-0).
+
+Quedo atento(a) a la activación. ¡Gracias!`;
+
+    document.getElementById('sus-codigo').textContent = code;
+    document.getElementById('sus-mailto').href =
+      'mailto:hydroxventas@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+    susForm.style.display = 'none';
+    document.getElementById('sus-exito').style.display = 'block';
+    document.getElementById('sus-exito').scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+});
+</script>
+</body>
+</html>
