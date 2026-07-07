@@ -29,7 +29,7 @@ Sistema de búsqueda automatizada de propiedades en Guatemala. El cliente llena 
 
 | Plan | Precio | Búsquedas/mes | Canal |
 |------|--------|---------------|-------|
-| Básico | $29–49 | 15 | Telegram |
+| Básico | $39 | 15 | Telegram |
 | Pro | $99 | 30 | Telegram + WhatsApp + Email |
 | Agencia | $249 | Ilimitadas | Todo + MLS interno |
 | Empresa | $499+ | Ilimitadas | Todo + CRM + Dashboard |
@@ -124,7 +124,7 @@ internamente al tomar decisiones de diseño, negocio o técnicas.
 
 **Conocimiento del proyecto (actualizado):**
 - Costos por búsqueda estimados: Apify (~$0.04) + Claude API (~$0.02–0.05) + Make.com (ops) ≈ $0.08–0.12 por búsqueda
-- Plan Básico: 15 búsquedas × $0.10 costo ≈ $1.50 costo de operación vs $29–49 ingreso → margen amplio
+- Plan Básico: 15 búsquedas × $0.10 costo ≈ $1.50 costo de operación vs $39 ingreso → margen amplio
 - Make.com: plan actual cubre el volumen de operaciones? Verificar límites
 - No hay sistema de cobro automatizado aún — pagos manuales
 
