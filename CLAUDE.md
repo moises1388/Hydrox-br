@@ -8,6 +8,8 @@ Sistema de búsqueda automatizada de propiedades en Guatemala. El cliente llena 
 **Repositorio:** moises1388/Hydrox-br  
 **Rama de trabajo:** claude/hydrox-brai-review-tx04j9
 
+⚠️ **Alcance de esta sesión/repo:** Moises maneja un ecosistema más grande bajo la marca Hydrox (FreshTouch, IoT, Bombeo, etc.) en otros repos (`freshtouch-hx01`, `hydrox-ai`, `hydrox-dashboard`, `hydrox-b-r`) trabajados desde otras sesiones de Claude Code. Esta sesión/repo **solo** cubre el sitio web de Hydrox B&R AI (bienes raíces) y su automatización en Make.com. Ver "Sistemas relacionados fuera de este repo" más abajo antes de asumir que algo no existe solo porque no está aquí.
+
 ---
 
 ## Stack técnico
@@ -19,9 +21,11 @@ Sistema de búsqueda automatizada de propiedades en Guatemala. El cliente llena 
 | Scraping FB | Apify actor `U5DUNxhH3qKt5PnCf` |
 | Scraping otras fuentes | HTTP GET + HTMLToText (Encuentra24, Immobili, CBR) |
 | IA | Anthropic API — claude-sonnet-4-6 |
-| Entrega | Telegram Bot (conexión Make.com id 4059287) |
-| Webhook búsqueda | `https://hook.us2.make.com/z7bc9jug7fqt51x61ku8uyon9vijjovw` |
-| Webhook asesores | `https://hook.us2.make.com/i4elgx9w0k64dmqkclu8lybym1x61gsx` |
+| Entrega | Telegram Bot "HydroxBot" (conexión Make.com id 4059287) — resultados de búsqueda |
+| Webhook búsqueda | `https://hook.us2.make.com/z7bc9jug7fqt51x61ku8uyon9vijjovw` (escenario 5473661) |
+| Webhook asesores | `https://hook.us2.make.com/i4elgx9w0k64dmqkclu8lybym1x61gsx` (escenario 5539650, `isinvalid` — sin arreglar) |
+| Messenger (Sofia) | Escenario Make.com 5747741 — responde consultas de Facebook Messenger con Claude, activo desde 2026-09-21 |
+| Prospección diaria | Bot Telegram `@hydroxbr_avisos_bot` ("Hydrox BR Avisos") — **NO es Make.com**, corre en sistema "Forja" gestionado desde otra sesión/repo. Ver sección de sistemas externos |
 
 ---
 
@@ -46,11 +50,47 @@ Sistema de búsqueda automatizada de propiedades en Guatemala. El cliente llena 
 - `css/estilos.css` — Variables globales, reset, header, footer
 - `css/componentes.css` — Componentes de página, hero, formulario, plan cards
 - `js/main.js` — Lógica: scroll header, menú móvil, formulario multi-paso, webhook
+- `suscripcion.html` — Página de suscripción: datos de transferencia bancaria, formulario que genera código de cliente y arma un `mailto:` a hydroxventas@gmail.com con el comprobante para verificación manual en 24h
+- `INTEGRACIONES-WHATSAPP-MESSENGER.md` — Guía técnica para conectar WhatsApp Cloud API y Messenger (pendiente: faltan credenciales de Meta Business de Moises)
 
 ## Lógica de cliente (localStorage)
 - `hx_user_code` — Código único del usuario (formato HX-XXXXXX)
 - `hx_search_count` — Contador de búsquedas del mes
 - `hx_telegram_chat_id` — Chat ID guardado para no re-ingresar
+- `VIP_CODES` (en `js/main.js`) — lista de códigos que activan acceso ilimitado sin pasar por el contador de búsquedas, usados vía `?codigo=` en la URL. Pensados para Moises + 3-5 amigos de prueba, revocables borrándolos del array
+
+## Pago y suscripción (bank transfer manual)
+- Banco Industrial, cuenta Monetaria (Quetzales) 373-000430-0, a nombre de HYDROX
+- Flujo: cliente llena `suscripcion.html` → se genera/reutiliza su `hx_user_code` → cliente transfiere → envía comprobante + código por correo a hydroxventas@gmail.com → activación manual en 24h
+- Add-on "sitios adicionales": el cliente puede pedir que se agregue una fuente propia a su búsqueda por un costo mensual extra (cotizado caso por caso). En el copy público **nunca se usa la palabra "scrapear"** — se dice "buscar en" / "sitios adicionales donde quieres que busquemos"
+- No hay cobro automatizado (Stripe, etc.) — pendiente de Roberto
+
+---
+
+## Sistemas relacionados fuera de este repo (NO tocar desde aquí sin pedir acceso)
+
+| Sistema | Dónde vive | Qué hace |
+|---------|-----------|----------|
+| **Forja** | Otra sesión/repo (surgió en sesión "Chatbot IA usando Forja") | Motor de prospección diaria: manda 3 mensajes/día al bot Telegram `@hydroxbr_avisos_bot` ("Hydrox BR Avisos") con prospectos del sector inmobiliario + mensaje sugerido para copiar y pegar. Desde 2026-09-21 el mensaje incluye el link al sitio y la frase de la empresa. También manda avisos de escalación por el mismo bot. |
+| **Sistema de Ventas AI - Multi-Negocio** | Ya no vive en Make (escenario 5681531 quedó inactivo a propósito) | Moises confirmó (2026-09) que esto "ahora lo maneja Claude sin usar Make" — gestionado desde otra sesión. |
+| **FreshTouch, hydrox-ai, hydrox-dashboard, hydrox-b-r** | Repos separados | Otras líneas de negocio de Moises (vending, IoT, bombeo, etc.) — nada que ver con el buscador de propiedades, pero comparten la misma cuenta de Make.com (equipo `927515`, ver abajo) y varias sesiones de Claude Code. |
+
+Si algo parece "no estar pasando" pero el usuario insiste en que sí, revisa primero si es uno de estos sistemas externos antes de concluir que está roto.
+
+---
+
+## Estado de los escenarios de Make.com (equipo 927515) — última auditoría 2026-09-21
+
+| ID | Nombre | Estado | Notas |
+|----|--------|--------|-------|
+| 5473661 | RE: Buscador Propiedades Guatemala | ✅ Activo (reactivado 2026-09-21) | **Se encontró apagado con 0 ejecuciones** — causa de que una búsqueda de prueba no llegara a Telegram. Blueprint interno estaba correcto (Top 5 Básico / Top 10 Pro+, split de 3 mensajes por límite de 4096 chars de Telegram). Reactivado, pendiente de que Moises confirme con una prueba real. |
+| 5747741 | HYDROX - Agente Messenger (Sofia) | ✅ Activo (reactivado 2026-09-21) | Responde por Facebook Messenger con Claude y avisa cada conversación a Telegram (chat 7494138882). **Su prompt interno todavía dice "Plan Básico $29-49"** — desactualizado, pendiente de corregir a $39. |
+| 5539650 | RE: Hydrox Asesores AI | ❌ Inactivo, `isinvalid: true` | Sin arreglar, no se ha tocado en las últimas sesiones. |
+| 5681531 | Sistema de Ventas AI - Multi-Negocio (Base) | ❌ Inactivo (a propósito) | Confirmado por Moises: ya no se gestiona por Make. |
+| 5097819, 5432304, 5270629, 6187069 | Escenarios "FreshTouch" | ✅ Activos | No son de Hydrox B&R AI — son de otra línea de negocio (FreshTouch) que comparte la cuenta de Make. No tocar. |
+
+### ⚠️ Incidente "Broadcast Leads" (lección aprendida)
+En agosto 2026 el escenario 5473661 fue sobrescrito manualmente (fuera de las sesiones de Claude) para convertirlo temporalmente en un relay de mensajes ("HydroxBot - Broadcast Leads"), reusando el mismo webhook del buscador — esto rompió la búsqueda de propiedades sin que fuera obvio por qué. Causa: Moises quería pausar un flujo de prospectos entrantes que no le funcionaba bien, y lo hizo editando directamente el escenario equivocado. Fue reconstruido preservando el mismo webhook. **Lección:** antes de asumir que un escenario "no sirve", revisar su blueprint completo — puede haber sido reescrito manualmente para otro propósito.
 
 ---
 
@@ -160,9 +200,11 @@ internamente al tomar decisiones de diseño, negocio o técnicas.
 
 **Recomendaciones pendientes de David:**
 - Agregar un módulo de extracción de URLs (regex) antes del HTMLToText para Encuentra24/Immobili/CBR
-- Agregar manejo de "sin resultados" en el prompt de Claude para que no falle silenciosamente
-- Implementar notificación de error a Telegram si el escenario falla
+- ~~Agregar manejo de "sin resultados" en el prompt de Claude~~ → hecho (regla NIVEL 1/2/3 en el prompt del escenario 5473661)
+- Implementar notificación de error a Telegram si el escenario falla (sigue pendiente — hoy el escenario puede quedar apagado sin que nadie se entere, como pasó el 2026-09)
 - Explorar Browserless o Playwright como alternativa al HTTP GET para sitios que requieren JS
+- Corregir el precio desactualizado ($29-49) en el prompt del escenario Messenger Sofia (5747741) — debería decir $39
+- Conectar WhatsApp Cloud API (Parte 1 de `INTEGRACIONES-WHATSAPP-MESSENGER.md`) — falta que Moises entregue Phone Number ID + token permanente
 
 **Proceso para agregar nueva fuente de scraping:**
 1. Identificar URL de búsqueda con parámetros (tipo + zona)
@@ -209,6 +251,16 @@ internamente al tomar decisiones de diseño, negocio o técnicas.
 | 2026-06-30 | Make.com: prompt Claude actualizado — nunca "No disponible" | David, Sofía |
 | 2026-06-30 | Hero sections con foto real de casa (Unsplash) | Ana Sofía |
 | 2026-06-30 | Asesores Make.com: escenario id 5539650 para consultas internas | David |
+| 2026-08 | Precio Plan Básico fijado en $39 (antes rango $29–49) en sitio y Make | Roberto |
+| 2026-08 | Fix Encuentra24: URL apuntaba a homepage, corregida a categoría real | David |
+| 2026-08 | Fix Make: concatenación `&` fallaba silenciosamente en IML — reemplazada por interpolación directa `{{campo}}` | David |
+| 2026-08 | Página `suscripcion.html`: pago por transferencia bancaria + generación de código de cliente | Roberto, Sofía |
+| 2026-08 | Códigos VIP de acceso ilimitado para pruebas (Moises + amigos) | Roberto |
+| 2026-08 | Add-on de "sitios adicionales" (sin usar la palabra "scrapear" en el copy público) | Ana Sofía, David |
+| 2026-08 | Top de resultados: Plan Básico 3→5, Pro/Agencia/Empresa →10; split de 3 mensajes Telegram por límite de 4096 chars | David |
+| 2026-08 | Incidente Broadcast Leads: escenario 5473661 sobrescrito manualmente, reconstruido preservando el webhook | David |
+| 2026-09-21 | Auditoría: buscador (5473661) y Messenger Sofia (5747741) encontrados inactivos y reactivados | David |
+| 2026-09-21 | Identificado sistema "Forja" (otra sesión) como responsable de la prospección diaria vía `@hydroxbr_avisos_bot`; se le agregó el link del sitio al mensaje | Ana Sofía, Sofía |
 
 ---
 
